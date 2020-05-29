@@ -1,0 +1,48 @@
+.nav-bar {
+  width: 100%;
+  background: #ee6e73;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-container {
+  height: 45px;
+  color: white;
+  display: flex;
+  width: 80%;
+  align-items: center;
+}
+
+.nav-container p {
+  margin: 0 20px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-right: auto;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  height: 100%;
+}
+
+.nav-content li {
+  height: 100%;
+}
+
+.nav-content li a {
+  text-decoration: none;
+  color: white;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease;
+  font-size: 0.95rem;
+  font-weight: 450;
+  height: 100%;
+}
+
+.nav-content li a:hover {
+  background: #d4494e;
+}
