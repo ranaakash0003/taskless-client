@@ -38,10 +38,13 @@ export const addToCart = (id, image, productName, price) => async (
   }
 };
 
-export const removeFromCart = (id, productName, price) => async (dispatch) => {
+export const removeFromCart = (id, image, productName, price) => async (
+  dispatch
+) => {
   try {
     const data = {
       id,
+      image,
       productName,
       price,
     };

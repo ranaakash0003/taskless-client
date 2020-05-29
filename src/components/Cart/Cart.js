@@ -21,12 +21,12 @@ const Cart = () => {
 
   // let orderList = cart.map(i => i.id)
   console.log("Ssssss", cart);
-  const addItem = (id, productName, price) => {
-    dispatch(actions.addToCart(id, productName, price));
+  const addItem = (id, image, productName, price) => {
+    dispatch(actions.addToCart(id, image, productName, price));
   };
 
-  const removeItem = (id, productName, price) => {
-    dispatch(actions.removeFromCart(id, productName, price));
+  const removeItem = (id, image, productName, price) => {
+    dispatch(actions.removeFromCart(id, image, productName, price));
     console.log("rrrrrr", id, productName, price);
   };
   const handleSubmit = () => {
@@ -53,45 +53,59 @@ const Cart = () => {
             />
           </IconContext.Provider>
         </div>
-        {cart.map((item) => {
-          return (
-            <div className="cart-content" key={item.id}>
-              <div className="cart-img">
-                <img src={item.image ? item.image : "noimage.png"} alt="img" />
-              </div>
-              <h6>{item.productName}</h6>
-              <div className="count">
-                <IconContext.Provider value={{ color: "#ff7e75" }}>
-                  <IoIosRemoveCircle
-                    className="clear-cart"
-                    onClick={() =>
-                      removeItem(
-                        item.id,
-                        item.productName,
-                        item.price / item.quantity
-                      )
-                    }
-                  />
-                  <span>{item.quantity}</span>
-                  <IoMdAddCircle
-                    className="clear-cart"
-                    onClick={() =>
-                      addItem(
-                        item.id,
-                        item.productName,
-                        item.price / item.quantity
-                      )
-                    }
-                  />
-                </IconContext.Provider>
-              </div>
-              <h6>৳{item.price}</h6>
-              <IconContext.Provider value={{ color: "#F44336" }}>
-                <IoMdBackspace onClick={(e) => handleRemove(item.id)} />{" "}
-              </IconContext.Provider>
-            </div>
-          );
-        })}
+        {cart.length > 0 ? (
+          <>
+            {" "}
+            {cart.map((item) => {
+              return (
+                <div className="cart-content" key={item.id}>
+                  <div className="cart-img">
+                    <img
+                      src={item.image ? item.image : "noimage.png"}
+                      alt="img"
+                    />
+                  </div>
+                  <h6>{item.productName}</h6>
+                  <div className="count">
+                    <IconContext.Provider value={{ color: "#ff7e75" }}>
+                      <IoIosRemoveCircle
+                        className="clear-cart"
+                        onClick={() =>
+                          removeItem(
+                            item.id,
+                            item.image,
+                            item.productName,
+                            item.price / item.quantity
+                          )
+                        }
+                      />
+                      <span>{item.quantity}</span>
+                      <IoMdAddCircle
+                        className="clear-cart"
+                        onClick={() =>
+                          addItem(
+                            item.id,
+                            item.image,
+                            item.productName,
+                            item.price / item.quantity
+                          )
+                        }
+                      />
+                    </IconContext.Provider>
+                  </div>
+                  <h6>৳{item.price}</h6>
+                  <IconContext.Provider value={{ color: "#F44336" }}>
+                    <IoMdBackspace onClick={(e) => handleRemove(item.id)} />{" "}
+                  </IconContext.Provider>
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <div className="cart-content">
+            <h5>Your cart is empty.</h5>
+          </div>
+        )}
       </div>
       <div className="cart-order">
         <button className="order-btn" onClick={handleSubmit}>

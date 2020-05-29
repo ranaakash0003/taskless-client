@@ -80,3 +80,7 @@
 .clear-cart {
   cursor: pointer;
 }
+.cart-empty {
+  text-align: center;
+  font-weight: normal;
+}
