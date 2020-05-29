@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actionTypes from "./actionType";
 
-const baseUrl = "http://localhost:5000";
+const baseUrl = "https://taskless-server.herokuapp.com";
 
 export const getProducts = () => async (dispatch) => {
   try {
